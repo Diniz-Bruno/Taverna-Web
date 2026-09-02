@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>TavernaWeb.Service</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TavernaWeb.Domain\TavernaWeb.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DTOs\Ficha\request\" />
+      <Folder Include="DTOs\Ficha\response\" />
+      <Folder Include="DTOs\Ordem\request\" />
+      <Folder Include="DTOs\Ordem\response\" />
+    </ItemGroup>
+
+</Project>
