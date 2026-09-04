@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TavernaWeb.Domain.Models;
 
 namespace TavernaWeb.Persistence.Context;
@@ -12,6 +12,10 @@ public class ApplicationDbContext: DbContext
     
     public DbSet<Ordem> FichaOrdem { get; set; }
     public DbSet<Ficha> Fichas { get; set; }
-    
-    //APLICA A LOGICA DPS
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+    }
 }
