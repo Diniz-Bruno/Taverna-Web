@@ -1,7 +1,5 @@
-using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TavernaWeb.Domain.Enums.Ordem;
 using TavernaWeb.Domain.Models;
 
 namespace TavernaWeb.Persistence.EntityConfigurations;
@@ -14,8 +12,8 @@ public class OrdemConfiguration : IEntityTypeConfiguration<Ordem>
         builder.ToTable("FichaOrdem");
 
         // Chave Primária
-        builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id)
+        builder.HasKey(x => x.Idficha);
+        builder.Property(x => x.Idficha)
             .ValueGeneratedOnAdd();
 
         // Dados Gerais
@@ -66,18 +64,5 @@ public class OrdemConfiguration : IEntityTypeConfiguration<Ordem>
         builder.Property(x => x.Presenca)
             .IsRequired()
             .HasDefaultValue(0);
-
-        // Coleções mapeadas como JSON
-        builder.Property(x => x.Poderes)
-            .HasConversion(
-                v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
-                v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions?)null) ?? new List<string>()
-            );
-
-        builder.Property(x => x.Pericias)
-            .HasConversion(
-                v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
-                v => JsonSerializer.Deserialize<Dictionary<PericiasEnum, int>>(v, (JsonSerializerOptions?)null) ?? new Dictionary<PericiasEnum, int>()
-            );
     }
 }

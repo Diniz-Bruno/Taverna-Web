@@ -12,6 +12,8 @@ public class ApplicationDbContext: DbContext
     
     public DbSet<Ordem> FichaOrdem { get; set; }
     public DbSet<Ficha> Fichas { get; set; }
+    public DbSet<Pericia> Pericias { get; set; }
+    public DbSet<Poderes> Poderes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
