@@ -1,8 +1,10 @@
 using TavernaWeb.Domain.Enums.Ordem;
+using TavernaWeb.Domain.Enums.Sistemas;
 namespace TavernaWeb.Domain.Models;
 
 public class Ordem
 {
+    public SistemasEnum Sistema { get; }= SistemasEnum.ORDEM_PARANORMAL;
     public int Idficha { get; set; }
     public int Nex { get; set; }
     public int Vida { get; set; }

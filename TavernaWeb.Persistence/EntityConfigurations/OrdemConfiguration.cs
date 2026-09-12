@@ -8,15 +8,19 @@ public class OrdemConfiguration : IEntityTypeConfiguration<Ordem>
 {
     public void Configure(EntityTypeBuilder<Ordem> builder)
     {
-        // Nome da tabela
-        builder.ToTable("FichaOrdem");
+        builder.ToTable("FichasOrdem");
 
-        // Chave Primária
         builder.HasKey(x => x.Idficha);
         builder.Property(x => x.Idficha)
-            .ValueGeneratedOnAdd();
+        .ValueGeneratedNever();
 
-        // Dados Gerais
+        builder.HasOne<Ficha>()
+        .WithOne()
+        .HasForeignKey<Ordem>(x => x.Idficha)
+        .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Ignore(x => x.Sistema);
+
         builder.Property(x => x.Nome)
             .IsRequired()
             .HasMaxLength(150);
